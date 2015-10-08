@@ -61,14 +61,62 @@ esac
 #Post-reverb stereo channel mixing, as would normally occur in a real room..
 processingChain="$processingChain ladspa bs2b 650 9.5"
 
-#Subtle effect, TubeWarmpth. Seems to slightly ease harmonic distortion.
-processingChain="$processingChain ladspa -r tap_tubewarmth 2.5 10"
-
 #Headphone frequency correction.
-processingChain="$processingChain ladspa -r single_para_1203 6 16000 4 ladspa -r single_para_1203 3 17000 2 ladspa -r single_para_1203 -3 250 1 ladspa -r single_para_1203 -4 1250 2 ladspa -r single_para_1203 -13 4250 0.65 ladspa -r single_para_1203 -10 7650 0.3 ladspa -r single_para_1203 -3 11250 0.65"
+#processingChain="$processingChain ladspa -r single_para_1203 6 16000 4 ladspa -r single_para_1203 3 17000 2 ladspa -r single_para_1203 -3 250 1 ladspa -r single_para_1203 -4 1250 2 ladspa -r single_para_1203 -13 4250 0.65 ladspa -r single_para_1203 -10 7650 0.3 ladspa -r single_para_1203 -3 11250 0.65"
+
+processingChain="$processingChain ladspa -r single_para_1203 4 16000 4 ladspa -r single_para_1203 3 17000 2 ladspa -r single_para_1203 -2 8500 0.2 ladspa -r single_para_1203 -1 5700 0.05 ladspa -r single_para_1203 -8 13450 0.2 ladspa -r single_para_1203 -6 8750 0.2 ladspa -r single_para_1203 1 25 2 ladspa -r single_para_1203 -5 5500 0.35"
+
+
+#ladspa -r single_para_1203 4 16000 4
+#ladspa -r single_para_1203 3 17000 2
+#ladspa -r single_para_1203 -2 8500 0.2
+#ladspa -r single_para_1203 -1 5700 0.05
+#ladspa -r single_para_1203 -8 13450 0.2
+#ladspa -r single_para_1203 -6 8750 0.2
+#ladspa -r single_para_1203 1 25 2
+#ladspa -r single_para_1203 -5 5500 0.35
+
+#Subtle effect, TubeWarmpth. Seems to slightly ease harmonic distortion. Disabled for apparently undesirable artifacts in some situations.
+processingChain="$processingChain ladspa -r tap_tubewarmth 2.5 10"
 
 echo ''
 echo -e '\E[1;32;46m'""$processingChain""'\E[0m'
 echo ''
 
 find . -type f -regextype posix-extended -regex '.*\.ogg|.*\.mp3|.*\.flac|.*\.wav|.*\.m4a|.*\.wma|.*\.wv|.*\.swa|.*\.aac|.*\.ac3' -exec sox --multi-threaded --buffer 131072 {} -C 8 {}-"$reverbType"-256kb.ogg $processingChain \; -exec rm {} \;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
