@@ -1,5 +1,8 @@
-Copyright (C) 2014 mirage335
+Copyright (C) 2014,2017 mirage335
 See the end of the file for license conditions.
+
+OBSOLETE - Migrated to Ubiquitous Bash, part of audioManager.
+https://github.com/mirage335/audioManager
 
 __Purpose__
 Preprocesses audio files with reverberation, headphone frequency response correction, and other effects. Once preprocessed, these audio files may be used on embedded devices (eg. smartphones) without real-time LADSPA capability.
